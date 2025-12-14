@@ -21,14 +21,14 @@ import TagsTemplate from "./components/TagsTemplate";
 import TagItem from "./components/TagItem";
 import Search from "./components/Search";
 
-import loopCurrentBtn from "../../public/img/player/loop_current.png"
-import loopNoneBtn from "../../public/img/player/loop_none.png";
-import previousBtn from "../../public/img/player/previous.png";
-import playBtn from "../../public/img/player/play.png";
-import pauseBtn from "../../public/img/player/pause.png";
-import nextBtn from "../../public/img/player/next.png";
-import shuffleAllBtn from "../../public/img/player/shuffle_all.png";
-import shuffleNoneBtn from "../../public/img/player/shuffle_none.png";
+const loopCurrentBtn = "/img/player/loop_current.png";
+const loopNoneBtn = "/img/player/loop_none.png";
+const previousBtn = "/img/player/previous.png";
+const playBtn = "/img/player/play.png";
+const pauseBtn = "/img/player/pause.png";
+const nextBtn = "/img/player/next.png";
+const shuffleAllBtn = "/img/player/shuffle_all.png";
+const shuffleNoneBtn = "/img/player/shuffle_none.png";
 
 const colors = `html{
   --tagsBackground: #9440f3;
@@ -161,7 +161,10 @@ ${customColorScheme}
 
   const play = () => {
     setActive(true);
-    audio.play();
+    audio.play().catch(() => {
+      // Browser blocked autoplay - user must interact first
+      setActive(false);
+    });
   };
 
   const pause = () => {
@@ -175,9 +178,12 @@ ${customColorScheme}
 
   useEffect(() => {
     if (audio != null) {
+      const wasActive = active;
       audio.src = trackList[curTrack].url;
       setTitle(trackList[curTrack].title);
-      play();
+      if (wasActive) {
+        play();
+      }
     }
   }, [curTrack]);
 

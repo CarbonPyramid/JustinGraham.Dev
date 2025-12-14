@@ -6,6 +6,7 @@ import { CacheProvider, EmotionCache } from "@emotion/react";
 import createEmotionCache from "../lib/createEmotionCache";
 import theme from "../theme";
 import GlobalStyle from '../components/Games/Hangman/globalStyles';
+import Footer from "../components/layout/Footer";
 import type { AppProps } from 'next/app';
 
 // Client-side cache, shared for the whole session of the user in the browser.
@@ -46,6 +47,7 @@ export default function MyApp(props: MyAppProps) {
         <CssBaseline />
         <GlobalStyle />
         <Component {...pageProps} />
+        <Footer />
       </ThemeProvider>
     </CacheProvider>
   );

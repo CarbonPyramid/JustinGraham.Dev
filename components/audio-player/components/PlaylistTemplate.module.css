@@ -1,9 +1,9 @@
 .wrapper {
   width: 100%;
-  margin: 20px auto 20px auto;
-  max-height: 425px;
-  min-height: 120px;
+  margin: 5px auto 0 auto;
+  max-height: 150px;
   overflow-x: hidden;
+  overflow-y: auto;
   padding-right: 10px;
   font-family: "Quicksand", sans-serif;
 }

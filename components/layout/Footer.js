@@ -65,11 +65,6 @@ const Footer = () => {
     >
       <Container maxWidth="lg">
         <Grid container spacing={2} justifyContent="center">
-          <Player
-            trackList={tracks}
-            showPlaylist={true}
-            autoPlayNextTrack={true}
-          />
           <Grid item component="div">
             <PlayCircleFilledIcon
               onClick={handleClick}
@@ -77,26 +72,37 @@ const Footer = () => {
               color="secondary"
             />
             <Popover
-              sx={{ width: "100%" }}
               open={open}
               anchorEl={anchorEl}
               onClose={handleClose}
+              keepMounted
+              disableScrollLock
               anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'center',
+                vertical: 'top',
+                horizontal: 'left',
               }}
               transformOrigin={{
-                vertical: 'top',
-                horizontal: 'center',
+                vertical: 'bottom',
+                horizontal: 'left',
+              }}
+              slotProps={{
+                paper: {
+                  sx: {
+                    backgroundColor: 'transparent',
+                    boxShadow: 'none',
+                    overflow: 'visible',
+                    marginBottom: '10px',
+                  }
+                }
               }}
             >
-              <Player
-                trackList={tracks}
-                includeTags={true}
-                includeSearch={true}
-                showPlaylist={true}
-                autoPlayNextTrack={true}
-              />
+              <Box sx={{ width: 500 }}>
+                <Player
+                  trackList={tracks}
+                  showPlaylist={true}
+                  autoPlayNextTrack={true}
+                />
+              </Box>
             </Popover>
           </Grid>
         </Grid>

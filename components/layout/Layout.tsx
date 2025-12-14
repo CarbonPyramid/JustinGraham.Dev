@@ -1,5 +1,4 @@
 import Header from "./Header";
-import Footer from "./Footer";
 import Head from "next/head";
 
 type LayoutProps = {
@@ -66,7 +65,6 @@ type LayoutProps = {
       </Head>
       <Header />
       <main>{children}</main>
-      <Footer />
       <style jsx global>
         {`
           html,

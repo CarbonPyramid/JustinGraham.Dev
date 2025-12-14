@@ -1,0 +1,7 @@
+@font-face {
+    font-family: 'RobotoCondensed';
+    src: url('RobotoCondensed-Black.eot');
+    src: url('RobotoCondensed-Black.eot?#iefix') format('embedded-opentype'), url('RobotoCondensed-Black.woff2') format('woff2'), url('RobotoCondensed-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+}

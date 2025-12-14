@@ -1,0 +1,13 @@
+.wrapper {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+@media only screen and (max-width: 600px) {
+  .wrapper {
+    padding: 0;
+  }
+}

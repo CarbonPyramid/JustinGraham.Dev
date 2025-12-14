@@ -2,9 +2,6 @@ import React from "react";
 import dynamic from 'next/dynamic';
 import { useTheme } from "@mui/material/styles";
 import { Container, Grid, Typography, Popover, Box } from "@mui/material";
-import PhoneIcon from "@mui/icons-material/Phone";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
 import PlayCircleFilledIcon from '@mui/icons-material/PlayCircleFilled';
 
 const Player = dynamic(() => import("../audio-player/index"), { ssr: false });
@@ -27,14 +24,8 @@ const tracks = [
   }
 ];
 
-const socialMedia = {
-  workin: "https://my.indeed.com/p/justing-7gpei7g",
-  github: "https://github.com/devjustingraham",
-};
-
 const Footer = () => {
   const theme = useTheme();
-  const { workin, github } = socialMedia;
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -57,6 +48,7 @@ const Footer = () => {
     "&:hover": {
       color: theme.palette.info.main,
     },
+    cursor: 'pointer',
   };
 
   return (
@@ -73,33 +65,6 @@ const Footer = () => {
     >
       <Container maxWidth="lg">
         <Grid container spacing={2} justifyContent="center">
-          <Grid
-            item
-            component="a"
-            target="_blank"
-            rel="noreferrer noopener"
-            href="tel:4792220451"
-          >
-            <PhoneIcon sx={iconStyles} color="secondary" />
-          </Grid>
-          <Grid
-            item
-            component="a"
-            target="_blank"
-            rel="noreferrer noopener"
-            href={workin}
-          >
-            <WorkOutlineIcon sx={iconStyles} color="secondary" />
-          </Grid>
-          <Grid
-            item
-            component="a"
-            target="_blank"
-            rel="noreferrer noopener"
-            href={github}
-          >
-            <GitHubIcon sx={iconStyles} color="secondary" />
-          </Grid>
           <Player
             trackList={tracks}
             showPlaylist={true}
@@ -108,7 +73,7 @@ const Footer = () => {
           <Grid item component="div">
             <PlayCircleFilledIcon
               onClick={handleClick}
-              sx={{ ...iconStyles, cursor: 'pointer' }}
+              sx={iconStyles}
               color="secondary"
             />
             <Popover

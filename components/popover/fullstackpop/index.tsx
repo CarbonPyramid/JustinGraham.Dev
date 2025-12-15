@@ -18,8 +18,7 @@ export default function FullStackPopover() {
 
   return (
     <Box>
-      Justin Graham
-      <Box sx={{ display: "flex", justifyContent: "center" }}>
+           <Box sx={{ display: "flex", justifyContent: "center" }}>
         <Typography
           aria-owns={open ? 'mouse-over-popover' : undefined}
           aria-haspopup="true"
@@ -34,7 +33,7 @@ export default function FullStackPopover() {
             style={{ textDecoration: "none", color: "black", display: "flex" }}
             href="./FullStackDeveloper"
           >
-            Full Stack Developer
+            Justin Graham
           </a>
         </Typography>
       </Box>
@@ -61,11 +60,7 @@ export default function FullStackPopover() {
         disableScrollLock
       >
         <Typography sx={{ display: "flex", textAlign: "center", margin: "1rem" }}>
-          A full stack developer works with both the front and back ends of a web
-          application —meaning they can integrate advanced databases and
-          functionalities, build complex user interfaces and plan directly with
-          customers while having a full understanding of the application from
-          beginning to end. Click to read more about this distinction.
+          Full Stack Developer, Engineer, & Technician             
         </Typography>
       </Popover>
     </Box>

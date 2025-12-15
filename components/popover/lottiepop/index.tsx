@@ -2,16 +2,18 @@ import React from 'react';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import LottieWrapper from '../../LottieWrapper';
+import dynamic from 'next/dynamic';
+
+const LottieWrapper = dynamic(() => import('../../LottieWrapper'), { ssr: false });
 
 export default function LottiePopover() {
   const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null);
 
-  const handlePopoverOpen2 = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
+  const handlePopoverOpen = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handlePopoverClose2 = () => {
+  const handlePopoverClose = () => {
     setAnchorEl(null);
   };
 
@@ -19,44 +21,44 @@ export default function LottiePopover() {
 
   return (
     <Box>
-      <Box sx={{ display: "flex", justifyContent: "center" }}>
-        <Typography
-          aria-owns={open ? 'mouse-over-popover' : undefined}
-          aria-haspopup="true"
-          onMouseEnter={handlePopoverOpen2}
-          onMouseLeave={handlePopoverClose2}
-          variant="h1"
-          align="center"
-          gutterBottom
-          sx={{ marginBottom: "1em" }}
-        >
-          <a
-            style={{ textDecoration: "none", color: "black", display: "flex" }}
-            href="./Lottie"
-          >
-            <LottieWrapper />
-          </a>
-        </Typography>
+      <Box
+        aria-owns={open ? 'lottie-popover' : undefined}
+        aria-haspopup="true"
+        onMouseEnter={handlePopoverOpen}
+        onMouseLeave={handlePopoverClose}
+        sx={{ display: 'flex', justifyContent: 'center', cursor: 'pointer' }}
+      >
+        <LottieWrapper />
       </Box>
       <Popover
-        id="mouse-over-popover"
+        id="lottie-popover"
         sx={{
           pointerEvents: 'none',
-          maxWidth: '80%',
-          display: "flex",
-          justifyContent: "center"
+        }}
+        slotProps={{
+          paper: {
+            sx: {
+              backgroundColor: '#18191f',
+              padding: '1rem',
+            }
+          }
         }}
         open={open}
         anchorEl={anchorEl}
-        onClose={handlePopoverClose2}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'center',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'center',
+        }}
+        onClose={handlePopoverClose}
         disableRestoreFocus
         disableScrollLock
       >
-        <Typography sx={{ display: "flex", textAlign: "center", margin: "1rem" }}>
-          Lottie animations make it possible to create the most engaging web
-          user interfaces due to their small size. There are tons of other
-          benefits and I also detail more about how to use it effectively. Click
-          for more information.
+        <Typography sx={{ color: '#fff', textAlign: 'center' }}>
+          Click to explore more animations
         </Typography>
       </Popover>
     </Box>

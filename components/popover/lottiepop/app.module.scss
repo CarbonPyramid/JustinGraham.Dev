@@ -1,27 +1,27 @@
 .hover {
   position: relative;
+  display: flex;
+  justify-content: center;
+}
 
-  &:hover &__no-hover {
-    opacity: 0;
-  }
+.hover__hover {
+  display: none;
+}
 
-  &:hover &__hover {
-    opacity: 1;
-  }
+.hover__no {
+  display: block;
+}
 
-  &__hover {
-    position: absolute;
-    top: 0;
-    opacity: 0;
-  }
+.hover:hover .hover__hover {
+  display: block;
+}
 
-  &__no-hover {
-    opacity: 1;
-  }
+.hover:hover .hover__no {
+  display: none;
 }
 
 .center {
-  // justify-content: "center";
-  bottom: 0;
-  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

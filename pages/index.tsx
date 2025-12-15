@@ -1,7 +1,6 @@
 import Layout from "../components/layout/Layout";
 import { Container, Typography } from "@mui/material";
 import FullStackPopover from "../components/popover/fullstackpop/index";
-import LottiePopover from "../components/popover/lottiepop/index";
 import dynamic from "next/dynamic";
 
 const LottieWrapper = dynamic(() => import('../components/LottieWrapper'), { ssr: false });
@@ -28,7 +27,6 @@ const Home = () => {
           <FullStackPopover />
         </Typography>
         <div>
-          {/* <LottiePopover /> */}
           <LottieWrapper />
                   <Typography
           variant="h2"

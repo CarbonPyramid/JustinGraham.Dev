@@ -47,6 +47,7 @@ const Player = ({
   trackList,
   showPlaylist = true,
   autoPlayNextTrack = true,
+  autoPlay = false,
   customColorScheme = colors,
 }) => {
   let playlist = [];
@@ -97,6 +98,17 @@ ${customColorScheme}
 
     setAudio(audio);
     setTitle(trackList[curTrack].title);
+
+    // Try to auto-play when audio is ready
+    if (autoPlay) {
+      audio.addEventListener("canplaythrough", () => {
+        setActive(true);
+        audio.play().catch(() => {
+          // Browser blocked autoplay - user must interact first
+          setActive(false);
+        });
+      }, { once: true });
+    }
 
     return () => {
       audio.pause();

@@ -101,6 +101,7 @@ const Footer = () => {
                   trackList={tracks}
                   showPlaylist={true}
                   autoPlayNextTrack={true}
+                  autoPlay={true}
                 />
               </Box>
             </Popover>

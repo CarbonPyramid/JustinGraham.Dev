@@ -28,11 +28,20 @@ export const Content = styled.div`
   width: 300px;
   height: 150px;
   text-align: center;
+
+  @media (max-width: 600px) {
+    width: 90%;
+    max-width: 280px;
+  }
 `
 export const Title = styled.h1`
   text-transform: uppercase;
   color: var(--color-white);
   font-size: var(--color-large);
+
+  @media (max-width: 600px) {
+    font-size: 18px;
+  }
 `
 export const Button = styled.button`
   text-transform: uppercase;
@@ -57,4 +66,17 @@ export const Button = styled.button`
       right: 16px;
       top: 16px;
     `}
+
+  @media (max-width: 600px) {
+    padding: 10px 25px;
+    font-size: 12px;
+
+    ${({ pause }) =>
+      pause &&
+      css`
+        right: 10px;
+        top: 10px;
+        padding: 8px 15px;
+      `}
+  }
 `

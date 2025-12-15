@@ -4,6 +4,12 @@ export const Man = styled.div`
   position: relative;
   margin: 70px 0 0 77.5px;
   width: 100px;
+
+  @media (max-width: 600px) {
+    margin: 50px 0 0 50px;
+    transform: scale(0.7);
+    transform-origin: top left;
+  }
 `
 export const Hair = styled.div`
   width: 100%;

@@ -6,14 +6,12 @@ import styles from './popover/lottiepop/app.module.scss';
 export default function LottieWrapper() {
   return (
     <div className={styles.center}>
-      <a href="/Lottie">
         <Lottie
           animationData={animationData}
           loop={true}
           autoplay={true}
           style={{ height: 400, width: 400 }}
         />
-      </a>
     </div>
   );
 }

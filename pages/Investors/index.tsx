@@ -13,7 +13,7 @@ const Investors = () => {
     },
     {
       name: "GoFundMe",
-      url: "https://www.gofundme.com/",
+      url: "https://gofund.me/798681bf2",
       description: "Help fund my projects",
       icon: <FavoriteIcon sx={{ fontSize: 40, color: '#00b964' }} />
     }

@@ -7,7 +7,7 @@ const Investors = () => {
   const supportLinks = [
     {
       name: "Buy Me a Coffee",
-      url: "https://buymeacoffee.com/",
+      url: "https://buymeacoffee.com/justingoldx",
       description: "Support my work with a coffee",
       icon: <CoffeeIcon sx={{ fontSize: 40, color: '#FFDD00' }} />
     },

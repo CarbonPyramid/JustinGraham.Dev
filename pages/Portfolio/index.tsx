@@ -1,7 +1,10 @@
 import Layout from "../../components/layout/Layout";
 import { Container, Grid, Typography, Link, Card, CardContent } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 
 const Portfolio = () => {
+  const theme = useTheme();
+
   const projects = [
     {
       name: "JustinGraham.dev",
@@ -29,7 +32,7 @@ const Portfolio = () => {
           </Grid>
           {projects.map((project) => (
             <Grid item key={project.name} sx={{ width: '100%' }}>
-              <Card sx={{ backgroundColor: '#18191f' }}>
+              <Card sx={{ backgroundColor: theme.palette.background.paper }}>
                 <CardContent>
                   <Link
                     href={project.url}
@@ -37,11 +40,11 @@ const Portfolio = () => {
                     rel="noopener noreferrer"
                     sx={{ textDecoration: 'none' }}
                   >
-                    <Typography variant="h5" sx={{ color: '#9440f3' }}>
+                    <Typography variant="h5" sx={{ color: theme.palette.info.main }}>
                       {project.name}
                     </Typography>
                   </Link>
-                  <Typography sx={{ color: '#fff', mt: 1 }}>
+                  <Typography sx={{ color: theme.palette.text.primary, mt: 1 }}>
                     {project.description}
                   </Typography>
                 </CardContent>

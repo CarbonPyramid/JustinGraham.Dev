@@ -2,11 +2,13 @@ import React from 'react';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import { useTheme } from '@mui/material/styles';
 import dynamic from 'next/dynamic';
 
 const LottieWrapper = dynamic(() => import('../../LottieWrapper'), { ssr: false });
 
 export default function LottiePopover() {
+  const theme = useTheme();
   const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null);
 
   const handlePopoverOpen = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
@@ -38,7 +40,7 @@ export default function LottiePopover() {
         slotProps={{
           paper: {
             sx: {
-              backgroundColor: '#18191f',
+              backgroundColor: theme.palette.background.paper,
               padding: '1rem',
             }
           }
@@ -57,7 +59,7 @@ export default function LottiePopover() {
         disableRestoreFocus
         disableScrollLock
       >
-        <Typography sx={{ color: '#fff', textAlign: 'center' }}>
+        <Typography sx={{ color: theme.palette.text.primary, textAlign: 'center' }}>
           Click to explore more animations
         </Typography>
       </Popover>

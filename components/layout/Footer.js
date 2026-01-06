@@ -1,8 +1,10 @@
 import React from "react";
 import dynamic from 'next/dynamic';
+import Link from 'next/link';
 import { useTheme } from "@mui/material/styles";
 import { Container, Grid, Typography, Popover, Box } from "@mui/material";
 import PlayCircleFilledIcon from '@mui/icons-material/PlayCircleFilled';
+import EmailIcon from '@mui/icons-material/Email';
 
 const Player = dynamic(() => import("../audio-player/index"), { ssr: false });
 
@@ -41,6 +43,7 @@ const Footer = () => {
   const iconStyles = {
     width: 30,
     height: 30,
+    color: '#fff',
     [theme.breakpoints.down('sm')]: {
       width: 25,
       height: 25,
@@ -55,7 +58,7 @@ const Footer = () => {
     <Box
       component="footer"
       sx={{
-        backgroundColor: theme.palette.primary.main,
+        backgroundColor: '#212121',
         width: "100%",
         position: "relative",
         overflow: "hidden",
@@ -64,12 +67,11 @@ const Footer = () => {
       }}
     >
       <Container maxWidth="lg">
-        <Grid container spacing={2} justifyContent="center">
-          <Grid item component="div">
+        <Grid container spacing={2} justifyContent="center" alignItems="center">
+          <Grid item sx={{ display: 'flex', alignItems: 'center' }}>
             <PlayCircleFilledIcon
               onClick={handleClick}
               sx={iconStyles}
-              color="secondary"
             />
             <Popover
               open={open}
@@ -105,6 +107,13 @@ const Footer = () => {
                 />
               </Box>
             </Popover>
+          </Grid>
+          <Grid item sx={{ display: 'flex', alignItems: 'center' }}>
+            <Link href="/Contact" style={{ display: 'flex', alignItems: 'center' }}>
+              <EmailIcon
+                sx={iconStyles}
+              />
+            </Link>
           </Grid>
         </Grid>
         <Grid

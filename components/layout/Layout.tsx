@@ -1,5 +1,7 @@
 import Header from "./Header";
 import Head from "next/head";
+import { useTheme } from "@mui/material/styles";
+import { GlobalStyles } from "@mui/material";
 
 type LayoutProps = {
   children: React.ReactNode
@@ -9,18 +11,9 @@ type LayoutProps = {
   url?: string
 }
 
-// export const Layout = function (props: Props) {
-  // const { children, className } = props
-  // const classes = useStyles(props)
-  // const { selectedPage } = usePage()
-  // return(<></>)}
+const Layout: React.FunctionComponent<LayoutProps> = ({ children, title, description, ogImage, url }) => {
+  const theme = useTheme();
 
-  const Layout: React.FunctionComponent<LayoutProps> = ({ children, title, description, ogImage, url }) => {
-  // website Url
-  // const pageUrl =
-  //   "";
-  // when you share this page on facebook you'll see this image
-  // const ogImg = "";
   return (
     <>
       <Head>
@@ -63,31 +56,30 @@ type LayoutProps = {
           key="og:description"
         />
       </Head>
+      <GlobalStyles
+        styles={{
+          'html, body': {
+            background: theme.palette.background.default,
+            color: theme.palette.text.primary,
+            overflowX: 'hidden',
+            padding: '0 !important',
+            transition: 'background-color 0.3s ease, color 0.3s ease',
+          },
+          '#__next': {
+            minHeight: '100vh',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+          },
+          main: {
+            flex: 1,
+          },
+        }}
+      />
       <Header />
       <main>{children}</main>
-      <style jsx global>
-        {`
-          html,
-          body {
-            background: #f9f9f9;
-            overflow-x: hidden;
-            padding: 0 !important;
-          }
-          #__next {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-          }
-          main {
-            flex: 1;
-          }
-        `}
-      </style>
     </>
   );
 };
-//             overflow-x: hidden;
-//            
 
 export default Layout;

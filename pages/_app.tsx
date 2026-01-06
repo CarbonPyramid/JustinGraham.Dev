@@ -1,11 +1,9 @@
 import React from "react";
 import Head from "next/head";
-import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { CacheProvider, EmotionCache } from "@emotion/react";
 import createEmotionCache from "../lib/createEmotionCache";
-import theme from "../theme";
-import GlobalStyle from '../components/Games/Hangman/globalStyles';
+import { ThemeProvider } from "../lib/ThemeContext";
 import Footer from "../components/layout/Footer";
 import type { AppProps } from 'next/app';
 
@@ -43,9 +41,8 @@ export default function MyApp(props: MyAppProps) {
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
       </Head>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider>
         <CssBaseline />
-        <GlobalStyle />
         <Component {...pageProps} />
         <Footer />
       </ThemeProvider>

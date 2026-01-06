@@ -1,10 +1,13 @@
 import Layout from "../../components/layout/Layout";
 import { Container, Grid, Typography, Link, Card, CardContent } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 import NewspaperIcon from "@mui/icons-material/Newspaper";
 import WbSunnyIcon from "@mui/icons-material/WbSunny";
 import SatelliteAltIcon from "@mui/icons-material/SatelliteAlt";
 
 const Interests = () => {
+  const theme = useTheme();
+
   const interests = [
     {
       name: "Hacker News",
@@ -38,7 +41,7 @@ const Interests = () => {
           </Grid>
           {interests.map((interest) => (
             <Grid item key={interest.name} sx={{ width: '100%' }}>
-              <Card sx={{ backgroundColor: '#18191f' }}>
+              <Card sx={{ backgroundColor: theme.palette.background.paper }}>
                 <CardContent sx={{ display: 'flex', alignItems: 'center', gap: 3 }}>
                   {interest.icon}
                   <div>
@@ -48,11 +51,11 @@ const Interests = () => {
                       rel="noopener noreferrer"
                       sx={{ textDecoration: 'none' }}
                     >
-                      <Typography variant="h5" sx={{ color: '#9440f3' }}>
+                      <Typography variant="h5" sx={{ color: theme.palette.info.main }}>
                         {interest.name}
                       </Typography>
                     </Link>
-                    <Typography sx={{ color: '#fff', mt: 1 }}>
+                    <Typography sx={{ color: theme.palette.text.primary, mt: 1 }}>
                       {interest.description}
                     </Typography>
                   </div>

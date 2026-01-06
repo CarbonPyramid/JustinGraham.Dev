@@ -4,9 +4,24 @@ const mainBlack = "#212121";
 const mainWhite = "#fafafa";
 const blue = "#757ce8";
 
-// Create a theme instance.
-const theme = createTheme({
+const baseTypography = {
+  h1: {
+    fontSize: "2.25rem",
+    fontWeight: 500,
+  },
+  h2: {
+    fontSize: "1.5rem",
+    fontWeight: 500,
+  },
+  h3: {
+    fontSize: "1.25rem",
+    fontWeight: 500,
+  },
+};
+
+export const createLightTheme = () => createTheme({
   palette: {
+    mode: 'light',
     primary: {
       main: mainBlack,
     },
@@ -18,22 +33,14 @@ const theme = createTheme({
     },
     background: {
       default: '#f9f9f9',
+      paper: '#ffffff',
+    },
+    text: {
+      primary: mainBlack,
+      secondary: '#666666',
     },
   },
-  typography: {
-    h1: {
-      fontSize: "2.25rem",
-      fontWeight: 500,
-    },
-    h2: {
-      fontSize: "1.5rem",
-      fontWeight: 500,
-    },
-    h3: {
-      fontSize: "1.25rem",
-      fontWeight: 500,
-    },
-  },
+  typography: baseTypography,
   components: {
     MuiLink: {
       styleOverrides: {
@@ -45,4 +52,46 @@ const theme = createTheme({
   },
 });
 
+export const createDarkTheme = () => createTheme({
+  palette: {
+    mode: 'dark',
+    primary: {
+      main: mainWhite,
+    },
+    secondary: {
+      main: mainBlack,
+    },
+    info: {
+      main: blue,
+    },
+    background: {
+      default: '#121212',
+      paper: '#1e1e1e',
+    },
+    text: {
+      primary: mainWhite,
+      secondary: '#b0b0b0',
+    },
+  },
+  typography: baseTypography,
+  components: {
+    MuiLink: {
+      styleOverrides: {
+        root: {
+          color: mainWhite,
+        },
+      },
+    },
+    MuiAppBar: {
+      styleOverrides: {
+        root: {
+          backgroundColor: '#1e1e1e',
+        },
+      },
+    },
+  },
+});
+
+// Default export for backwards compatibility
+const theme = createLightTheme();
 export default theme;

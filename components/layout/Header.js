@@ -17,7 +17,10 @@ import {
 } from "@mui/material";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import MenuIcon from "@mui/icons-material/Menu";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
 import { routes } from "../../lib/data/routes";
+import { useThemeMode } from "../../lib/ThemeContext";
 
 function ElevationScroll(props) {
   const { children } = props;
@@ -43,6 +46,7 @@ const ToolbarMargin = styled('div')(({ theme }) => ({
 
 const Header = () => {
   const theme = useTheme();
+  const { mode, toggleTheme } = useThemeMode();
   const iOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent);
   const matches = useMediaQuery(theme.breakpoints.down("sm"));
   const [openDrawer, setOpenDrawer] = useState(false);
@@ -51,14 +55,30 @@ const Header = () => {
 
   const linkStyles = {
     fontSize: "1.25em",
-    color: theme.palette.secondary.main,
+    color: theme.palette.mode === 'dark' ? theme.palette.primary.main : theme.palette.secondary.main,
     "&:hover": {
       color: theme.palette.info.main,
     },
   };
 
+  const themeToggleButton = (
+    <IconButton
+      onClick={toggleTheme}
+      sx={{
+        color: theme.palette.mode === 'dark' ? theme.palette.primary.main : theme.palette.secondary.main,
+        ml: matches ? 0 : 2,
+        "&:hover": {
+          backgroundColor: "rgba(255, 255, 255, 0.1)",
+        },
+      }}
+      aria-label="Toggle dark mode"
+    >
+      {mode === 'dark' ? <LightModeIcon /> : <DarkModeIcon />}
+    </IconButton>
+  );
+
   const tabs = (
-    <Grid container justifyContent="center" spacing={4}>
+    <Grid container justifyContent="center" spacing={4} alignItems="center">
       {path.map(({ name, link }) => (
         <Grid item key={link}>
           <Link href={link}>
@@ -74,6 +94,9 @@ const Header = () => {
           </Link>
         </Grid>
       ))}
+      <Grid item>
+        {themeToggleButton}
+      </Grid>
     </Grid>
   );
 
@@ -88,7 +111,7 @@ const Header = () => {
         anchor="right"
         PaperProps={{
           sx: {
-            backgroundColor: theme.palette.secondary.main,
+            backgroundColor: theme.palette.background.paper,
             padding: "0 6em",
           }
         }}
@@ -106,7 +129,7 @@ const Header = () => {
                 <Link href={link}>
                   <Typography
                     sx={{
-                      color: router.pathname === link ? "primary" : "rgb(107 107 107)",
+                      color: router.pathname === link ? theme.palette.text.primary : theme.palette.text.secondary,
                       fontWeight: router.pathname === link ? "bold" : "normal",
                     }}
                   >
@@ -116,6 +139,9 @@ const Header = () => {
               </ListItemText>
             </ListItem>
           ))}
+          <ListItem sx={{ justifyContent: 'center', mt: 2 }}>
+            {themeToggleButton}
+          </ListItem>
         </List>
       </SwipeableDrawer>
       <IconButton
@@ -133,7 +159,7 @@ const Header = () => {
           sx={{
             height: 50,
             width: 50,
-            color: "#fff",
+            color: theme.palette.mode === 'dark' ? theme.palette.primary.main : "#fff",
             [theme.breakpoints.down('sm')]: {
               height: 40,
               width: 40,

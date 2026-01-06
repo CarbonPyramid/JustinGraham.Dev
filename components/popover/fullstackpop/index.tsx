@@ -2,8 +2,10 @@ import React from 'react';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import { useTheme } from '@mui/material/styles';
 
 export default function FullStackPopover() {
+  const theme = useTheme();
   const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null);
 
   const handlePopoverOpen = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
@@ -30,7 +32,7 @@ export default function FullStackPopover() {
           sx={{ marginBottom: "1em", maxWidth: "37%" }}
         >
           <a
-            style={{ textDecoration: "none", color: "black", display: "flex" }}
+            style={{ textDecoration: "none", color: theme.palette.text.primary, display: "flex" }}
             href="./FullStackDeveloper"
           >
             Justin Graham

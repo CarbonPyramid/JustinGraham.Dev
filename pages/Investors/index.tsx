@@ -1,9 +1,12 @@
 import Layout from "../../components/layout/Layout";
 import { Container, Grid, Typography, Link, Card, CardContent } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 import CoffeeIcon from "@mui/icons-material/Coffee";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
 const Investors = () => {
+  const theme = useTheme();
+
   const supportLinks = [
     {
       name: "Buy Me a Coffee",
@@ -31,7 +34,7 @@ const Investors = () => {
           </Grid>
           {supportLinks.map((link) => (
             <Grid item key={link.name} sx={{ width: '100%' }}>
-              <Card sx={{ backgroundColor: '#18191f' }}>
+              <Card sx={{ backgroundColor: theme.palette.background.paper }}>
                 <CardContent sx={{ display: 'flex', alignItems: 'center', gap: 3 }}>
                   {link.icon}
                   <div>
@@ -41,11 +44,11 @@ const Investors = () => {
                       rel="noopener noreferrer"
                       sx={{ textDecoration: 'none' }}
                     >
-                      <Typography variant="h5" sx={{ color: '#9440f3' }}>
+                      <Typography variant="h5" sx={{ color: theme.palette.info.main }}>
                         {link.name}
                       </Typography>
                     </Link>
-                    <Typography sx={{ color: '#fff', mt: 1 }}>
+                    <Typography sx={{ color: theme.palette.text.primary, mt: 1 }}>
                       {link.description}
                     </Typography>
                   </div>

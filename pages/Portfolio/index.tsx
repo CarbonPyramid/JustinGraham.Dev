@@ -27,9 +27,6 @@ const Portfolio = () => {
     <Layout title="Portfolio" description="Portfolio">
       <Container maxWidth="md">
         <Grid container direction="column" alignItems="center" spacing={4}>
-          <Grid item>
-            <Typography variant="h2" gutterBottom>Portfolio</Typography>
-          </Grid>
           {projects.map((project) => (
             <Grid item key={project.name} sx={{ width: '100%' }}>
               <Card sx={{ backgroundColor: theme.palette.background.paper }}>

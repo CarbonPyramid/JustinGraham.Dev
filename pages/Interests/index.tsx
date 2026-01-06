@@ -33,12 +33,6 @@ const Interests = () => {
     <Layout title="Interests" description="Things I find interesting">
       <Container maxWidth="md">
         <Grid container direction="column" alignItems="center" spacing={4}>
-          <Grid item>
-            <Typography variant="h2" gutterBottom>Interests</Typography>
-            <Typography variant="body1" sx={{ textAlign: 'center', mb: 4 }}>
-              Some things I find fascinating and worth sharing.
-            </Typography>
-          </Grid>
           {interests.map((interest) => (
             <Grid item key={interest.name} sx={{ width: '100%' }}>
               <Card sx={{ backgroundColor: theme.palette.background.paper }}>

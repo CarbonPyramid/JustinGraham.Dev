@@ -26,12 +26,6 @@ const Investors = () => {
     <Layout title="Investors" description="Support my work">
       <Container maxWidth="md">
         <Grid container direction="column" alignItems="center" spacing={4}>
-          <Grid item>
-            <Typography variant="h2" gutterBottom>Support My Work</Typography>
-            <Typography variant="body1" sx={{ textAlign: 'center', mb: 4 }}>
-              If you find my work valuable, consider supporting me through one of these platforms.
-            </Typography>
-          </Grid>
           {supportLinks.map((link) => (
             <Grid item key={link.name} sx={{ width: '100%' }}>
               <Card sx={{ backgroundColor: theme.palette.background.paper }}>

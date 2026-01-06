@@ -8,7 +8,7 @@ const LottieWrapper = dynamic(() => import('../components/LottieWrapper'), { ssr
 const Hangman = dynamic(() => import("../components/Games/Hangman/App"), { ssr: false });
 const TicTacToe = dynamic(() => import("../components/Games/TicTacToe/App"), { ssr: false });
 const Snake = dynamic(() => import("../components/Games/Snake/App"), { ssr: false });
-const TheCube = dynamic(() => import("../components/Games/TheCube/App"), { ssr: false });
+const Tetris = dynamic(() => import("../components/Games/Tetris/App"), { ssr: false });
 
 const Home = () => {
   return (
@@ -82,9 +82,9 @@ const Home = () => {
           gutterBottom
           sx={{ marginBottom: "1em" }}
         >
-          The Cube
+          Tetris
         </Typography>
-        <TheCube />
+        <Tetris />
       </Container>
     </Layout>
   );

@@ -5,8 +5,8 @@ const App = () => {
   return (
     <div className={styles.wrapper}>
       <iframe
-        src="/cube-game.html"
-        title="The Cube - Rubik's Cube Game"
+        src="/tetris-game.html"
+        title="Tetris - 3D Game"
         className={styles.iframe}
         allow="accelerometer; gyroscope"
       />
@@ -14,6 +14,6 @@ const App = () => {
   );
 };
 
-App.displayName = 'TheCube';
+App.displayName = 'TetrisGame';
 
 export default App;

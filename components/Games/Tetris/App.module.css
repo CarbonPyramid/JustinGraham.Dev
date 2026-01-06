@@ -12,3 +12,14 @@
   border: none;
   border-radius: 8px;
 }
+
+.error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #ff4444;
+  font-size: 1rem;
+  text-align: center;
+  padding: 2rem;
+}

@@ -10,7 +10,7 @@ export default function LottieWrapper() {
           animationData={animationData}
           loop={true}
           autoplay={true}
-          style={{ height: 400, width: 400 }}
+          style={{ height: 600, width: 600 }}
         />
     </div>
   );

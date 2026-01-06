@@ -3,9 +3,7 @@ import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { useTheme } from '@mui/material/styles';
-import dynamic from 'next/dynamic';
-
-const LottieWrapper = dynamic(() => import('../../LottieWrapper'), { ssr: false });
+import LottieWrapper from '../../LottieWrapper';
 
 export default function LottiePopover() {
   const theme = useTheme();
@@ -23,44 +21,51 @@ export default function LottiePopover() {
 
   return (
     <Box>
-      <Box
-        aria-owns={open ? 'lottie-popover' : undefined}
-        aria-haspopup="true"
-        onMouseEnter={handlePopoverOpen}
-        onMouseLeave={handlePopoverClose}
-        sx={{ display: 'flex', justifyContent: 'center', cursor: 'pointer' }}
-      >
-        <LottieWrapper />
+      <Box sx={{ display: "flex", justifyContent: "center" }}>
+        <Typography
+          aria-owns={open ? 'mouse-over-popover' : undefined}
+          aria-haspopup="true"
+          onMouseEnter={handlePopoverOpen}
+          onMouseLeave={handlePopoverClose}
+          variant="h1"
+          align="center"
+          gutterBottom
+          sx={{ marginBottom: "1em" }}
+        >
+          <a
+            style={{ textDecoration: "none", color: theme.palette.text.primary, display: "flex" }}
+            href="./Lottie"
+          >
+            <LottieWrapper />
+          </a>
+        </Typography>
       </Box>
       <Popover
-        id="lottie-popover"
+        id="mouse-over-popover"
         sx={{
           pointerEvents: 'none',
+          maxWidth: '80%',
+          display: "flex",
+          justifyContent: "center"
         }}
         slotProps={{
           paper: {
             sx: {
               backgroundColor: theme.palette.background.paper,
-              padding: '1rem',
             }
           }
         }}
         open={open}
         anchorEl={anchorEl}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'center',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'center',
-        }}
         onClose={handlePopoverClose}
         disableRestoreFocus
         disableScrollLock
       >
-        <Typography sx={{ color: theme.palette.text.primary, textAlign: 'center' }}>
-          Click to explore more animations
+        <Typography sx={{ display: "flex", textAlign: "center", margin: "1rem", color: theme.palette.text.primary }}>
+          Lottie animations make it possible to create the most engaging web
+          user interfaces due to their small size. There are tons of other
+          benefits and I also detail more about how to use it effectively. Click
+          for more information.
         </Typography>
       </Popover>
     </Box>

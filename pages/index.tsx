@@ -28,62 +28,30 @@ const Home = () => {
         </Typography>
         <div>
           <LottieWrapper />
-                  <Typography
-          variant="h2"
-          align="center"
-          gutterBottom
-          sx={{ marginBottom: "1em" }}
-        >
-        <br />
-        <br />
-        <hr />
-        <br />
-        <br />
-          Hangman
-        </Typography>
+          <br />
+          <br />
+          <hr />
+          <br />
+          <br />
           <Hangman />
         </div>
-        <Typography
-          variant="h2"
-          align="center"
-          gutterBottom
-          sx={{ marginBottom: "1em" }}
-        >
         <br />
         <br />
         <hr />
         <br />
         <br />
-          Tic Tac Toe
-        </Typography>
         <TicTacToe />
         <br />
         <br />
         <hr />
         <br />
         <br />
-        <Typography
-          variant="h2"
-          align="center"
-          gutterBottom
-          sx={{ marginBottom: "1em" }}
-        >
-          Snake
-        </Typography>
         <Snake />
         <br />
         <br />
         <hr />
         <br />
         <br />
-        <Typography
-          variant="h2"
-          align="center"
-          gutterBottom
-          sx={{ marginBottom: "1em" }}
-        >
-          Tetris
-        </Typography>
         <Tetris />
       </Container>
     </Layout>

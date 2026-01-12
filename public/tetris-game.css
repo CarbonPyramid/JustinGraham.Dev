@@ -470,7 +470,7 @@ icon[arrow-right] {
 
 @media (max-width: 600px) {
   .ui__record {
-    top: 5em;
+    top: 7em;
     right: 0.5em;
     padding: 0.5em 0.6em;
     min-width: 80px;

@@ -275,7 +275,7 @@ icon[arrow-right] {
 /* Global Record Display */
 .ui__record {
   position: absolute;
-  top: 1em;
+  top: 5em;
   right: 1em;
   text-align: center;
   background: rgba(117, 124, 232, 0.1);
@@ -406,7 +406,7 @@ icon[arrow-right] {
 
 @media (max-width: 600px) {
   .ui__record {
-    top: 0.5em;
+    top: 4.5em;
     right: 0.5em;
     padding: 0.5em 0.8em;
     min-width: 90px;

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tetris</title>
+  <link rel="stylesheet" href="/tetris-game.css">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <div class="ui">
+    <div class="ui__background"></div>
+    <div class="ui__game"></div>
+    <div class="ui__texts">
+      <h1 class="text text--title">TETRIS</h1>
+      <div class="text text--score">Score: <span>0</span></div>
+      <div class="text text--level">Level: <span>1</span></div>
+      <div class="text text--message">Press any arrow key to start!</div>
+    </div>
+    <div class="ui__next">
+      <div class="next-label">Next</div>
+      <div class="next-piece"></div>
+    </div>
+    <div class="ui__controls">
+      <div class="controls">
+        <button class="control-btn" data-action="rotate"><icon rotate></icon></button>
+        <div class="controls-row">
+          <button class="control-btn" data-action="left"><icon arrow-left></icon></button>
+          <button class="control-btn" data-action="down"><icon arrow-down></icon></button>
+          <button class="control-btn" data-action="right"><icon arrow-right></icon></button>
+        </div>
+        <button class="control-btn control-btn--wide" data-action="drop">DROP</button>
+      </div>
+    </div>
+    <div class="ui__stats">
+      <div class="stats" name="high-score"><i>High Score:</i><b>0</b></div>
+      <div class="stats" name="lines"><i>Lines Cleared:</i><b>0</b></div>
+      <div class="stats" name="games"><i>Games Played:</i><b>0</b></div>
+    </div>
+    <div class="ui__record">
+      <div class="record-label">World Record</div>
+      <div class="record-score" id="globalRecordScore">0</div>
+      <div class="record-holder" id="globalRecordHolder">-</div>
+    </div>
+    <div class="modal" id="newRecordModal">
+      <div class="modal__content">
+        <h2>New Record!</h2>
+        <p>You scored <span id="newScoreValue">0</span> points!</p>
+        <input type="text" id="playerNameInput" placeholder="Enter your name" maxlength="20" autocomplete="off">
+        <button id="saveRecordBtn">Save Record</button>
+      </div>
+    </div>
+    <div class="ui__buttons">
+      <button class="btn btn--bl btn--stats"><icon trophy></icon></button>
+      <button class="btn btn--br btn--restart"><icon reset></icon></button>
+      <button class="btn btn--bl btn--back"><icon back></icon></button>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r99/three.min.js"></script>
+  <script src="/tetris-game.js"></script>
+</body>
+</html>

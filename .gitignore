@@ -34,6 +34,9 @@ yarn-error.log*
 *.swp
 *.swo
 
+# Claude Code
+.claude/
+
 # TypeScript
 *.tsbuildinfo
 next-env.d.ts

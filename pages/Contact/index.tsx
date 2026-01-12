@@ -104,7 +104,7 @@ const Contact: React.FC = () => {
         }),
       });
 
-      const data = await response.json();
+      const data = await response.json() as { success: boolean; message?: string };
 
       if (data.success) {
         setResult({ success: true, message: 'Message sent successfully! I\'ll get back to you soon.' });

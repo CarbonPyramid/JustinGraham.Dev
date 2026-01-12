@@ -1,3 +1,9 @@
 # Cloudflare Pages configuration
 name = "justingraham-dev"
 pages_build_output_dir = "out"
+
+# D1 Database for high scores
+[[d1_databases]]
+binding = "DB"
+database_name = "justingraham-highscores"
+database_id = "54face31-6b3b-410f-b7eb-0ad7a10804e8"

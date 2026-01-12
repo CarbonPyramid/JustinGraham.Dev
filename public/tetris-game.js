@@ -135,6 +135,89 @@ class World {
   }
 }
 
+// Confetti effect
+const Confetti = {
+  canvas: null,
+  ctx: null,
+  particles: [],
+  colors: ['#FFB347', '#757ce8', '#FF6B6B', '#4ECDC4', '#45B7D1', '#98D8C8', '#F7DC6F'],
+
+  init() {
+    if (!this.canvas) {
+      this.canvas = document.createElement('canvas');
+      this.canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999';
+      document.body.appendChild(this.canvas);
+      this.ctx = this.canvas.getContext('2d');
+    }
+    this.resize();
+    window.addEventListener('resize', () => this.resize());
+  },
+
+  resize() {
+    if (this.canvas) {
+      this.canvas.width = window.innerWidth;
+      this.canvas.height = window.innerHeight;
+    }
+  },
+
+  launch() {
+    this.init();
+    this.particles = [];
+
+    for (let i = 0; i < 150; i++) {
+      this.particles.push({
+        x: Math.random() * this.canvas.width,
+        y: -20 - Math.random() * 100,
+        vx: (Math.random() - 0.5) * 8,
+        vy: Math.random() * 3 + 2,
+        color: this.colors[Math.floor(Math.random() * this.colors.length)],
+        size: Math.random() * 8 + 4,
+        rotation: Math.random() * 360,
+        rotationSpeed: (Math.random() - 0.5) * 10,
+        shape: Math.random() > 0.5 ? 'rect' : 'circle'
+      });
+    }
+
+    this.animate();
+  },
+
+  animate() {
+    if (!this.particles.length) return;
+
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+    this.particles = this.particles.filter(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      p.vy += 0.1;
+      p.rotation += p.rotationSpeed;
+      p.vx *= 0.99;
+
+      this.ctx.save();
+      this.ctx.translate(p.x, p.y);
+      this.ctx.rotate(p.rotation * Math.PI / 180);
+      this.ctx.fillStyle = p.color;
+
+      if (p.shape === 'rect') {
+        this.ctx.fillRect(-p.size / 2, -p.size / 4, p.size, p.size / 2);
+      } else {
+        this.ctx.beginPath();
+        this.ctx.arc(0, 0, p.size / 2, 0, Math.PI * 2);
+        this.ctx.fill();
+      }
+
+      this.ctx.restore();
+      return p.y < this.canvas.height + 20;
+    });
+
+    if (this.particles.length > 0) {
+      requestAnimationFrame(() => this.animate());
+    } else {
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    }
+  }
+};
+
 // Global record API functions
 const HighScoreAPI = {
   baseUrl: '/api/highscores',
@@ -260,6 +343,7 @@ class TetrisGame {
     this.ui.playerNameInput.value = '';
     this.ui.newRecordModal.classList.add('show');
     this.ui.playerNameInput.focus();
+    Confetti.launch();
   }
 
   hideNewRecordModal() {

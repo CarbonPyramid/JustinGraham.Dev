@@ -613,8 +613,8 @@ class Game {
       this.stats.wins++;
       this.stats.streak++;
 
-      // Check for new global record
-      if (this.stats.streak > this.globalRecord.score) {
+      // Check for new global record (must be at least 1)
+      if (this.stats.streak >= 1 && this.stats.streak > this.globalRecord.score) {
         setTimeout(() => this.showNewRecordModal(this.stats.streak), 500);
       }
     } else {

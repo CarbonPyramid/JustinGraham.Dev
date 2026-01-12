@@ -646,8 +646,8 @@ class Game {
     this.saveStats();
     this.updateStats();
 
-    // Check for new global record
-    if (this.score > this.globalRecord.score) {
+    // Check for new global record (must be at least 1)
+    if (this.score >= 1 && this.score > this.globalRecord.score) {
       setTimeout(() => this.showNewRecordModal(this.score), 500);
     }
   }
